@@ -160,4 +160,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # Project
-db.json
+dbUsers.json
+dbPosts.json
