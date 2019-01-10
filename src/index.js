@@ -100,6 +100,10 @@ app.post('/auth/register', middlewareRegister, (req, res) => {
   res.json({ auth: true, token });
 });
 
+app.get('/auth/logout', (req, res) => {
+  res.json({ auth: false, token: null });
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Servidor rodando em 'http://localhost:${port}'`);
