@@ -1,11 +1,16 @@
 // Packages
 const fs = require('fs');
 const express = require('express');
+const { validationResult } = require('express-validator/check');
+const bodyParser = require('body-parser');
 
 // Variables
 const app = express();
 const port = 3000;
 const databaseFileName = 'db.json';
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 /**
  * Verify if the file to store the informations exists,
