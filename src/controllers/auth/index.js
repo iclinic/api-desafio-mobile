@@ -19,7 +19,7 @@ route.post('/login', middlewareLogin, (req, res) => {
     return res.status(406).json({ error: errors.array() });
   }
 
-  const fileData = JSON.parse(fs.readFileSync(databaseFileUsers));
+  const fileData = JSON.parse(fs.readFileSync(process.env.DATABASE_USER));
 
   const { email, password } = req.body;
 
@@ -49,7 +49,7 @@ route.post('/register', middlewareRegister, (req, res) => {
     return res.status(406).json({ error: errors.array() });
   }
 
-  const fileData = JSON.parse(fs.readFileSync(databaseFileUsers));
+  const fileData = JSON.parse(fs.readFileSync(process.env.DATABASE_USER));
 
   const { name, email, password } = req.body;
 

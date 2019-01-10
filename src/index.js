@@ -1,5 +1,5 @@
 // Packages
-const fs = require('fs');
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -9,26 +9,18 @@ const { createDatabase } = require('./helpers');
 
 // Variables
 const app = express();
-const port = 3000;
-const databaseFileUsers = 'dbUsers.json';
-const databaseFilePosts = 'dbPosts.json';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-/**
- * Verify if the file to store the informations exists,
- * if not, create a empty file
- */
-createDatabase(databaseFileUsers);
-createDatabase(databaseFilePosts);
+createDatabase(process.env.DATABASE_USER);
+createDatabase(process.env.DATABASE_LOCATION);
 
 // Routes
 app.get('/', (req, res) => res.send('Welcome'));
-
 app.use('/auth', controllerAuth);
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Servidor rodando em 'http://localhost:${port}'`);
+app.listen(process.env.PORT, () => {
+  console.log(`Servidor rodando em 'http://localhost:${process.env.PORT}'`);
 });
