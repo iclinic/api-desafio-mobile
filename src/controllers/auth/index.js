@@ -32,7 +32,7 @@ route.post('/login', middlewareLogin, (req, res) => {
 
   const token = jwt.sign(
     { id: userInfo[0].id, name: userInfo[0].name, email: userInfo[0].email },
-    '49084b52d739f28aaaba047393d54623',
+    process.env.SECRET_KEY,
     {
       expiresIn: 86400
     }
@@ -74,13 +74,9 @@ route.post('/register', middlewareRegister, (req, res) => {
 
   const { id } = newUser;
 
-  const token = jwt.sign(
-    { id, name, email },
-    '49084b52d739f28aaaba047393d54623',
-    {
-      expiresIn: 86400
-    }
-  );
+  const token = jwt.sign({ id, name, email }, process.env.SECRET_KEY, {
+    expiresIn: 86400
+  });
 
   res.json({ auth: true, token });
 });
