@@ -13,7 +13,7 @@ const databaseFileName = 'db.json';
  */
 fs.access(databaseFileName, fs.constants.F_OK, (err) => {
   if (err) {
-    fs.writeFileSync(databaseFileName, '{}', (err) => {
+    fs.writeFileSync(databaseFileName, '[]', (err) => {
       if (err) {
         throw new Error(
           'Não foi possivel criar o arquivo para armazenar as informações'
