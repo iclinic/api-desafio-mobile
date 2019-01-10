@@ -7,19 +7,15 @@
     "start:api": "node src/index.js"
   },
   "dependencies": {
-    "bcrypt": "3.0.3",
     "body-parser": "1.18.3",
     "express": "4.16.4",
     "express-validator": "5.3.1",
     "jsonwebtoken": "8.4.0"
   },
   "devDependencies": {
-    "@types/jest": "23.3.12",
-    "coveralls": "3.0.2",
     "eslint": "5.12.0",
     "eslint-config-prettier": "3.3.0",
     "eslint-plugin-prettier": "3.0.1",
-    "jest": "23.6.0",
     "prettier": "1.15.3"
   },
   "license": "MIT"
