@@ -28,5 +28,5 @@ app.get('/', (req, res) => res.send('Welcome'));
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Servidor rodando em 'https://localhost:${port}'`);
+  console.log(`Servidor rodando em 'http://localhost:${port}'`);
 });
