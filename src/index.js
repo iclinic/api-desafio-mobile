@@ -3,6 +3,10 @@ const fs = require('fs');
 const express = require('express');
 const { validationResult } = require('express-validator/check');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+
+// Files
+const middlewareLogin = require('./middlewares/login');
 
 // Variables
 const app = express();
@@ -30,6 +34,36 @@ fs.access(databaseFileName, fs.constants.F_OK, (err) => {
 
 // Routes
 app.get('/', (req, res) => res.send('Welcome'));
+
+app.post('/auth/login', middlewareLogin, (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(406).json({ error: errors.array() });
+  }
+
+  const fileData = JSON.parse(fs.readFileSync(databaseFileName));
+
+  const { email, password } = req.body;
+
+  const userInfo = fileData.filter(
+    (user) => user.email === email && user.password === password
+  );
+
+  if (userInfo.length === 0) {
+    return res.status(406).json({ error: 'Usuário não encontrado' });
+  }
+
+  const token = jwt.sign(
+    { id: userInfo[0].name },
+    '49084b52d739f28aaaba047393d54623',
+    {
+      expiresIn: 86400
+    }
+  );
+
+  res.json({ auth: true, token });
+});
 
 // Start the server
 app.listen(port, () => {
