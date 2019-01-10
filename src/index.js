@@ -5,11 +5,13 @@ const bodyParser = require('body-parser');
 
 // Files
 const controllerAuth = require('./controllers/auth');
+const { createFile } = require('./helpers');
 
 // Variables
 const app = express();
 const port = 3000;
-const databaseFileName = 'db.json';
+const databaseFileUsers = 'dbUsers.json';
+const databaseFilePosts = 'dbPosts.json';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,15 +20,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
  * Verify if the file to store the informations exists,
  * if not, create a empty file
  */
-fs.access(databaseFileName, fs.constants.F_OK, (err) => {
+fs.access(databaseFileUsers, fs.constants.F_OK, (err) => {
   if (err) {
-    fs.writeFileSync(databaseFileName, '[]', (err) => {
-      if (err) {
-        throw new Error(
-          'Não foi possivel criar o arquivo para armazenar as informações'
-        );
-      }
-    });
+    createFile(databaseFileUsers);
+  }
+});
+
+fs.access(databaseFileUsers, fs.constants.F_OK, (err) => {
+  if (err) {
+    createFile(databaseFilePosts);
   }
 });
 

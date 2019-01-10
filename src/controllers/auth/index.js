@@ -10,7 +10,7 @@ const middlewareRegister = require('../../middlewares/register');
 
 // Variables
 const route = express.Router();
-const databaseFileName = 'db.json';
+const databaseFileUsers = 'dbUsers.json';
 
 route.post('/login', middlewareLogin, (req, res) => {
   const errors = validationResult(req);
@@ -19,7 +19,7 @@ route.post('/login', middlewareLogin, (req, res) => {
     return res.status(406).json({ error: errors.array() });
   }
 
-  const fileData = JSON.parse(fs.readFileSync(databaseFileName));
+  const fileData = JSON.parse(fs.readFileSync(databaseFileUsers));
 
   const { email, password } = req.body;
 
@@ -49,7 +49,7 @@ route.post('/register', middlewareRegister, (req, res) => {
     return res.status(406).json({ error: errors.array() });
   }
 
-  const fileData = JSON.parse(fs.readFileSync(databaseFileName));
+  const fileData = JSON.parse(fs.readFileSync(databaseFileUsers));
 
   const { name, email, password } = req.body;
 
@@ -67,7 +67,7 @@ route.post('/register', middlewareRegister, (req, res) => {
 
   fileData.push(newUser);
 
-  fs.writeFileSync(databaseFileName, JSON.stringify(fileData, null, 2));
+  fs.writeFileSync(databaseFileUsers, JSON.stringify(fileData, null, 2));
 
   const token = jwt.sign({ name, email }, '49084b52d739f28aaaba047393d54623', {
     expiresIn: 86400
