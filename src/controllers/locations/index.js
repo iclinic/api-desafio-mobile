@@ -9,7 +9,7 @@ const {
 
 // Files
 const verifyToken = require('../../middlewares/token');
-const locations = require('../../middlewares/locations');
+const locations = require('../../middlewares/location');
 
 // Variables
 const route = express.Router();
