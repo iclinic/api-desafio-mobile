@@ -1,15 +1,12 @@
 // Packages
 const fs = require('fs');
 const express = require('express');
-const {
-  validationResult,
-  readData,
-  writeData
-} = require('express-validator/check');
+const { validationResult } = require('express-validator/check');
 
 // Files
 const verifyToken = require('../../middlewares/token');
 const locations = require('../../middlewares/location');
+const { readData, writeData } = require('../../helpers');
 
 // Variables
 const route = express.Router();
