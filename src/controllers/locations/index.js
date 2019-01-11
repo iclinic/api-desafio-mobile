@@ -75,8 +75,8 @@ route.put('/:locationId', [verifyToken, locations], (req, res) => {
   );
 
   locationsData[selectedLocation] = {
-    id: fileData[selectedLocation].id,
-    createdBy: fileData[selectedLocation].createdBy,
+    id: locationsData[selectedLocation].id,
+    createdBy: locationsData[selectedLocation].createdBy,
     name: req.body.name,
     address: req.body.address,
     phone: req.body.phone,
@@ -88,7 +88,7 @@ route.put('/:locationId', [verifyToken, locations], (req, res) => {
 
   writeData(locationsData, process.env.DATABASE_LOCATION);
 
-  updatedLocation = fileData.findIndex(
+  updatedLocation = locationsData.findIndex(
     (location) => location.id === Number(req.params.locationId)
   );
 
