@@ -61,7 +61,9 @@ route.get('/:locationId', verifyToken, (req, res) => {
   const locationsData = readData(process.env.DATABASE_LOCATION);
 
   const selectedLocation = locationsData.findIndex(
-    (location) => location.id === Number(req.params.locationId)
+    (location) =>
+      location.id === Number(req.params.locationId) &&
+      location.createdBy === req.userId
   );
 
   res.json(locationsData[selectedLocation]);
