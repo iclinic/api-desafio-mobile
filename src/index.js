@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 // Files
 const controllerAuth = require('./controllers/auth');
+const controllerLocation = require('./controllers/locations');
 const { createDatabase } = require('./helpers');
 
 // Variables
@@ -19,6 +20,7 @@ createDatabase(process.env.DATABASE_LOCATION);
 // Routes
 app.get('/', (req, res) => res.send('Welcome'));
 app.use('/auth', controllerAuth);
+app.use('/locations', controllerLocation);
 
 // Start the server
 app.listen(process.env.PORT, () => {
