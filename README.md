@@ -18,9 +18,9 @@ $ npm install
 
 - Scripts disponíveis
 
-| Ações           | Comando         |
-| --------------- | --------------- |
-| Iniciando a API | `npm start:api` |
+| Ações              | Comando             |
+| ------------------ | ------------------- |
+| Iniciar o servidor | `npm run start:api` |
 
 ## License
 
