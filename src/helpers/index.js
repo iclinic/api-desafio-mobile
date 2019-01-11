@@ -15,6 +15,16 @@ const createDatabase = function(dbName) {
   });
 };
 
+const readData = function(dbName) {
+  return JSON.parse(fs.readFileSync(dbName));
+};
+
+const writeData = function(data, dbName) {
+  fs.writeFileSync(dbName, JSON.stringify(data, null, 2));
+};
+
 module.exports = {
-  createDatabase
+  createDatabase,
+  readData,
+  writeData
 };
