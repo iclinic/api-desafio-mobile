@@ -50,17 +50,21 @@ route.post('/', [verifyToken, locations], (req, res) => {
 
   locationsData = readData(process.env.DATABASE_LOCATION);
 
-  res.json(locationsData);
+  const selectedLocation = locationsData.findIndex(
+    (location) => location.id === Number(newLocation.id)
+  );
+
+  res.json(locationsData[selectedLocation]);
 });
 
 route.get('/:locationId', verifyToken, (req, res) => {
   const locationsData = readData(process.env.DATABASE_LOCATION);
 
-  const selectedLocation = locationsData.filter(
+  const selectedLocation = locationsData.findIndex(
     (location) => location.id === Number(req.params.locationId)
   );
 
-  res.json(selectedLocation);
+  res.json(locationsData[selectedLocation]);
 });
 
 route.put('/:locationId', [verifyToken, locations], (req, res) => {
