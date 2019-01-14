@@ -1,0 +1,11 @@
+{
+  "name": "api iClinic Mobile",
+  "version": 2,
+  "builds": [
+    {
+      "src": "*.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "regions": ["gru1"]
+}
