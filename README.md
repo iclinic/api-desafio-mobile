@@ -1,282 +1,32 @@
-# api-desafio-mobile
+# Desafio iClinic - Mobile
 
-> API desenvolvida para ser utilizada como base para o desafio de mobile da iClinic
+**Escolha** um dos desafios a seguir:
 
-## Utilizando
+## 1 - App de localizações
 
-- Clone ou baixe este repositório
+Construa um app que utilize React Native (sem Expo ou CRNA), que possua uma tela de autenticação de usuário, uma tela para cadastro de usuário, uma tela para listagem das localizações e uma tela para visualização dos dados referente a localização escolhida. Utilize a API disponibilizada [aqui]() ! Fique à vontade para o layout e estilos.
 
-```bash
-git clone https://github.com/iclinic/api-desafio-mobile.git
-```
+### O que gostaríamos de ver neste desafio
 
-- Instale as dependências
+- Redux
+- React Navigation
+- Testes com Jest
+- Boa organização de código
 
-```bash
-npm install
-```
+---
 
-- Scripts disponíveis
+## 2 - App client do Github
 
-| Ações              | Comando             |
-| ------------------ | ------------------- |
-| Iniciar o servidor | `npm run start:api` |
+Construa um app em React Native, com uma tela de autenticação, que possua uma Tab Bar com duas navegações, uma listando o seu feed do Github e outra que mostre os dados do seu perfil no Github que utilize a API do [Github](https://developer.github.com/v4/). Fique à vontade para o layout e estilos.
 
-## Interagindo com a API
+### O que gostaríamos de ver neste desafio
 
-Este servidor expõe um total de 8 rotas, sendo:
+- Relay (caso use Apollo, explicar o motivo de não optar por Relay)
+- React Navigation
+- Testes com Jest
+- Boa organização de código
 
-- 3 rotas para a autenticação do usuário
-- 5 rotas para a gestão das localizações
-
-## Autenticação
-
-### Login
-
-- URL: `/auth/login`
-- Verb: POST
-- Type: JSON
-- Body:
-  - email: `required`
-  - password: `required`
-- Example:
-
-```json
-// POST => http://localhost/auth/login
-{
-  "email": "admin@development.com",
-  "password": "admin123"
-}
-```
-
-- Reponse:
-  - Type: JSON
-
-```json
-// POST => http://localhost/auth/login
-{
-  "auth": true,
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODE2OCwibmFtZSI6IkRldmVsb3BlciIsImVtYWlsIjoiZGV2QGljbGluaWMuY29tLmJyIiwiaWF0IjoxNTQ3MjA0ODcxLCJleHAiOjE1NDcyOTEyNzF9.KR1CX_tqDx1dQxDdv45-w_lLKUhSAyBUXy5yKS51TyM"
-}
-```
-
-### Registro
-
-- URL: `/auth/register`
-- Verb: POST
-- Type: JSON
-- Body:
-  - name: `required`
-  - email: `required`
-  - password: `required`
-- Example:
-
-```json
-// POST => http://localhost/auth/register
-{
-  "name": "Administrator",
-  "email": "admin@development.com",
-  "password": "admin123"
-}
-```
-
-- Response:
-  - Type: JSON
-
-```json
-// POST => http://localhost/auth/register
-{
-  "auth": true,
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nzg3LCJuYW1lIjoiUGF1bG8gRWR1YXJkbyIsImVtYWlsIjoicGF1bG8uZWR1YXJkb0BpY2xpbmljLmNvbS5iciIsImlhdCI6MTU0NzIwNjQ"
-}
-```
-
-### Logout
-
-- URL: `/auth/logout`
-- Verb: GET
-- Type: JSON
-- Response:
-  - Type: JSON
-
-```json
-// GET => http://localhost/auth/logout
-{
-  "auth": false,
-  "token": null
-}
-```
-
-## Localizações
-
-### Todas as localizações
-
-- URL: `/locations`
-- Verb: GET
-- Type: JSON
-- Header:
-  - x-access-token: `required`
-- Response:
-  - Type: JSON
-
-```json
-// GET => http://localhost/locations
-[
-  {
-    "id": 8654,
-    "createdBy": 787,
-    "name": "Nome da Localização",
-    "address": "Endereço da Localização",
-    "phone": "(16) 98765-4321",
-    "type": "Tipo da Localização",
-    "lat": "10.5432",
-    "lng": "-11.4321",
-    "description": "Descrição da Localização"
-  }
-]
-```
-
-### Adicionar Localização
-
-- URL: `/locations`
-- Verb: POST
-- Type: JSON
-- Header:
-  - x-access-token: `required`
-- Body:
-  - name: `required`
-  - address: `required`
-  - phone: `required` | `format: (00) 00000-0000`
-  - type: `required`
-  - lat: `required`
-  - lng: `required`
-  - description: `required`
-- Example:
-
-```json
-{
-  "name": "Nome da Localização",
-  "address": "Endereço da Localização",
-  "phone": "(11) 12346-5432",
-  "type": "Tipo da Localização",
-  "lat": "10.2345",
-  "lng": "-10.2345",
-  "description": "Descrição da Localização"
-}
-```
-
-- Response:
-  - Type: JSON
-
-```json
-// POST => http://localhost/locations
-{
-  "id": 8654,
-  "createdBy": 787,
-  "name": "Nome da Localização",
-  "address": "Endereço da Localização",
-  "phone": "(11) 12346-5432",
-  "type": "Tipo da Localização",
-  "lat": "10.2345",
-  "lng": "-10.2345",
-  "description": "Descrição da Localização"
-}
-```
-
-### Requisitar Localização Expecífica
-
-- URL: `/locations/:locationId`
-- Verb: GET
-- Type: JSON
-- Header:
-  - x-access-token: `required`
-- Response:
-  - Type: JSON
-
-```json
-// GET => http://localhost/locations/8654
-{
-  "id": 8654,
-  "createdBy": 787,
-  "name": "Nome da Localização",
-  "address": "Endereço da Localização",
-  "phone": "(16) 98765-4321",
-  "type": "Tipo da Localização",
-  "lat": "10.5432",
-  "lng": "-11.4321",
-  "description": "Descrição da Localização"
-}
-```
-
-### Atualizar Localização Expecífica
-
-- URL: `/locations/:locationId`
-- Verb: PUT
-- Type: JSON
-- Header:
-  - x-access-token: `required`
-- Body:
-  - name: `required`
-  - address: `required`
-  - phone: `required` | `format: (00) 00000-0000`
-  - type: `required`
-  - lat: `required`
-  - lng: `required`
-  - description: `required`
-- Example:
-
-```json
-{
-  "name": "Nome da Localização - Atualizado",
-  "address": "Endereço da Localização - Atualizado",
-  "phone": "(11) 12346-5432",
-  "type": "Tipo da Localização - Atualizado",
-  "lat": "10.2345",
-  "lng": "-10.2345",
-  "description": "Descrição da Localização - Atualizado"
-}
-```
-
-- Response:
-  - Type: JSON
-
-```json
-// PUT => http://localhost/locations/8654
-{
-  "id": 8654,
-  "createdBy": 787,
-  "name": "Nome da Localização - Atualizado",
-  "address": "Endereço da Localização - Atualizado",
-  "phone": "(11) 12346-5432",
-  "type": "Tipo da Localização - Atualizado",
-  "lat": "10.2345",
-  "lng": "-10.2345",
-  "description": "Descrição da Localização - Atualizado"
-}
-```
-
-### Excluir Localização Expecífica
-
-- URL: `/locations/:locationId`
-- Verb: DEL
-- Type: JSON
-- Header:
-  - x-access-token: `required`
-- Body:
-  - name: `required`
-  - address: `required`
-  - phone: `required` | `format: (00) 00000-0000`
-  - type: `required`
-  - lat: `required`
-  - lng: `required`
-  - description: `required`
-- Response:
-  - Type: JSON
-
-```json
-// DEL => http://localhost/locations/8654
-true
-```
+---
 
 ## License
 
