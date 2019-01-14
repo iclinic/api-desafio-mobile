@@ -4,6 +4,8 @@
 
 ## Utilizando
 
+- Utilize: https://apiiclinicmobile-nadvviantm.now.sh/
+
 - Clone ou baixe este repositório
 
 ```bash
