@@ -5,7 +5,7 @@
   "description": "API desenvolvida para ser utilizada como base para o desafio de mobile da iClinic",
   "author": "",
   "scripts": {
-    "start:api": "node src/index.js"
+    "start:api": "node index.js"
   },
   "dependencies": {
     "body-parser": "1.18.3",
