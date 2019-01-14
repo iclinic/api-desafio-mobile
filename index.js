@@ -4,9 +4,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // Files
-const controllerAuth = require('./controllers/auth');
-const controllerLocation = require('./controllers/locations');
-const { createDatabase } = require('./helpers');
+const controllerAuth = require('./src/controllers/auth');
+const controllerLocation = require('./src/controllers/locations');
+const { createDatabase } = require('./src/helpers');
 
 // Variables
 const app = express();
