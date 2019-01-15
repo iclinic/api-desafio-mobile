@@ -4,7 +4,7 @@
 
 ## 1 - App de localizações
 
-Construa um app que utilize React Native (sem Expo ou CRNA), que possua uma tela de autenticação de usuário, uma tela para cadastro de usuário, uma tela para listagem das localizações e uma tela para visualização dos dados referente a localização escolhida. Utilize a API disponibilizada [aqui](./docs/API.md) ! Fique à vontade para o layout e estilos.
+Construa um app que utilize React Native, que possua uma tela de autenticação de usuário, uma tela para cadastro de usuário, uma tela para listagem das localizações e uma tela para visualização dos dados referente a localização escolhida. Utilize a API disponibilizada [aqui](./docs/API.md) ! Fique à vontade para o layout e estilos.
 
 ### O que gostaríamos de ver neste desafio
 
