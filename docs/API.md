@@ -22,7 +22,7 @@ npm install
 
 | Ações              | Comando             |
 | ------------------ | ------------------- |
-| Iniciar o servidor | `npm run start:api` |
+| Iniciar o servidor | `npm run now-start` |
 
 ## Interagindo com a API
 
